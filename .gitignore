@@ -1,3 +1,30 @@
 # .gitignore
-# Environment Variables
-.env 
+
+# Environment variables
+.env
+
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Django static and media files
+/static/
+/media/
+
+# Database files (if using SQLite for testing)
+*.sqlite3
+db.sqlite3
+
+# IDE and OS files
+.vscode/
+.idea/
+.DS_Store
+*.swo
+*.swp
