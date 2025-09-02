@@ -1,7 +1,22 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render, redirect
+from .forms import LoginForm 
 
-# Create your views here.
-def login(request):
-    # return HttpResponse("<h1>Welcome to Login Page</>")
-    return render(request, 'core/login.html')
+def login_view(request):
+    
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login_success')
+
+    else:
+        
+        form = LoginForm()
+
+    
+
+    return render(request, 'core/login.html', {'form': form})
+
+def login_success_view(request):
+    return render(request, 'core/login_success.html')
+
