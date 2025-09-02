@@ -9,9 +9,25 @@
        {% tailwind_css %}
 </head>
 <body>
-  <nav>
-    <h1>Corelytix</h1>
-  </nav>
+  <div class="navbar bg-gray-700 shadow-sm">
+  <div class="navbar-start">
+    <div class="dropdown">
+      <div>
+        <span>Corelytix</span>
+      </div>
+    </div>
+  </div>
+  <div class="navbar-end">
+    <a class="btn">Login</a>
+  </div>
+</div>
+<div class="flex justify-center items-center mt-8">
+  <div class='items-center'>
+    {% block content %}{% endblock %}
+  </div>
+</div>
+
+
     
 </body>
 </html>
