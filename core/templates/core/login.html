@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+<div class='mb-8 flex justify-between items-center'>
+<button  class=" mybtn bg-blue-500 hover:bg-gree-500 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline mb-2 cursor-pointer">Super Admin</button>
+<button class=" mybtn bg-blue-500 hover:bg-gree-500 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline mb-2 cursor-pointer">Client</button>
+<button class="mybtn bg-blue-500 hover:bg-gree-500 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline mb-2 cursor-pointer">Agent</button>
+</div>
+
 <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
 
@@ -18,7 +26,7 @@
         </div>
         
         <div class="flex items-center justify-between">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
+            <button  type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full cursor-pointer">
                 Sign In
             </button>
         </div>
