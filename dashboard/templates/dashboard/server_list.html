@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Management</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Apply the custom font to the whole page */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0f0c29;
+            background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+            color: #e0e0e0;
+        }
+
+        /* Keyframe animation for pages to fade and slide in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px) scale(0.98);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        .fade-in {
+             animation: fadeIn 0.7s ease-out forwards;
+        }
+
+        /* Main panel styling with frosted glass effect */
+        .dashboard-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* NEW BUTTON STYLE */
+        .add-server-btn {
+            background-color: rgba(236, 72, 153, 0.1); /* Faint pink background */
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(236, 72, 153, 0.2);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .add-server-btn:hover {
+            background-color: #ec4899; /* Solid pink on hover */
+            color: #ffffff; /* White text on hover */
+            transform: translateY(-5px); /* Lifts the button up */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Adds a shadow */
+        }
+        
+        /* Custom styles for the server management table */
+        .server-table th {
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        .server-table td {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .server-table tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.03);
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Server Management Page -->
+    <div class="dashboard-panel container mx-auto p-8 max-w-7xl rounded-3xl shadow-2xl shadow-black/30 fade-in">
+        <div class="py-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center w-full mb-4">
+                <div class="text-start mb-4 md:mb-0">
+                    <div class="flex items-center gap-4">
+                        <a href="/" class="text-gray-300 hover:text-white transition-colors">
+                            <i class="fas fa-arrow-left fa-2x"></i>
+                        </a>
+                        <div>
+                            <h1 class="text-4xl lg:text-5xl font-bold text-pink-400">
+                                Server Management
+                            </h1>
+                            <p class="mt-2 text-lg text-gray-400">
+                                A complete list of all provisioned servers.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <!-- UPDATED BUTTON HTML -->
+                    <a href="#" class="add-server-btn px-6 py-3 text-base font-semibold text-pink-400 rounded-lg">
+                        <i class="fas fa-plus mr-2"></i> Add Server
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="w-full overflow-x-auto rounded-lg">
+                <div class="px-4 py-4 border-b border-white/10 flex justify-end">
+                    <div class="relative">
+                        <span class="absolute inset-y-0 left-0 pl-3 flex items-center">
+                            <i class="fas fa-search text-gray-500"></i>
+                        </span>
+                        <input type="text" placeholder="Search servers..." class="pl-10 pr-4 py-2 border border-white/20 bg-white/5 rounded-lg w-full sm:w-64 focus:outline-none focus:ring-2 focus:ring-pink-400 text-white">
+                    </div>
+                </div>
+
+                <table class="min-w-full leading-normal server-table">
+                    <thead>
+                        <tr>
+                            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Client ID</th>
+                            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Server Domain</th>
+                            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Created</th>
+                            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Status</th>
+                            <th class="px-5 py-3 text-left text-xs font-semibold text-gray-400 uppercase tracking-wider">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="transition-colors duration-200">
+                            <td class="px-5 py-5 text-sm">
+                                <p class="whitespace-no-wrap font-medium text-white">CL-1</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <p class="whitespace-no-wrap">srv1.example.com</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <p class="text-gray-300 whitespace-no-wrap">Sep 01, 2025</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <span class="relative inline-block px-3 py-1 font-semibold text-green-300 leading-tight">
+                                    <span aria-hidden class="absolute inset-0 bg-green-900/50 opacity-50 rounded-full"></span>
+                                    <span class="relative">Active</span>
+                                </span>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <div class="flex items-center space-x-4 text-lg">
+                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors" title="View Details"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="text-yellow-400 hover:text-yellow-300 transition-colors" title="Edit Server"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="#" class="text-red-400 hover:text-red-300 transition-colors" title="Delete Server"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="transition-colors duration-200">
+                            <td class="px-5 py-5 text-sm">
+                                <p class="whitespace-no-wrap font-medium text-white">CL-2</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <p class="whitespace-no-wrap">data.corelytix.io</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <p class="text-gray-300 whitespace-no-wrap">Aug 28, 2025</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <span class="relative inline-block px-3 py-1 font-semibold text-yellow-300 leading-tight">
+                                    <span aria-hidden class="absolute inset-0 bg-yellow-900/50 opacity-50 rounded-full"></span>
+                                    <span class="relative">Maintenance</span>
+                                </span>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <div class="flex items-center space-x-4 text-lg">
+                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors" title="View Details"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="text-yellow-400 hover:text-yellow-300 transition-colors" title="Edit Server"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="#" class="text-red-400 hover:text-red-300 transition-colors" title="Delete Server"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="transition-colors duration-200">
+                            <td class="px-5 py-5 text-sm">
+                                <p class="whitespace-no-wrap font-medium text-white">CL-3</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <p class="whitespace-no-wrap">archive.old-domain.net</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <p class="text-gray-300 whitespace-no-wrap">Jul 15, 2025</p>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <span class="relative inline-block px-3 py-1 font-semibold text-red-300 leading-tight">
+                                    <span aria-hidden class="absolute inset-0 bg-red-900/50 opacity-50 rounded-full"></span>
+                                    <span class="relative">Offline</span>
+                                </span>
+                            </td>
+                            <td class="px-5 py-5 text-sm">
+                                <div class="flex items-center space-x-4 text-lg">
+                                    <a href="#" class="text-blue-400 hover:text-blue-300 transition-colors" title="View Details"><i class="fas fa-eye"></i></a>
+                                    <a href="#" class="text-yellow-400 hover:text-yellow-300 transition-colors" title="Edit Server"><i class="fas fa-pencil-alt"></i></a>
+                                    <a href="#" class="text-red-400 hover:text-red-300 transition-colors" title="Delete Server"><i class="fas fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    
+</body>
+</html>
+

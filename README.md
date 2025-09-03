@@ -1,1 +1,1 @@
-# corlytix
+# corlytix.ai
