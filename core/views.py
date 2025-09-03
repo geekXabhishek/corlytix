@@ -7,7 +7,7 @@ def login_view(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login_success')
+            return redirect('success')
 
     else:
         
