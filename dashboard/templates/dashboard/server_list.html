@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server List</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* Light slate background */
+            color: #1a202c;
+        }
+        /* Custom styles for action buttons in table*/
+        .action-btn-restart { color: #3b82f6; } /* Blue */
+        .action-btn-restart:hover { color: #2563eb; }
+        .action-btn-start { color: #22c55e; } /* Green */
+        .action-btn-start:hover { color: #16a34a; }
+        .action-btn-stop { color: #ef4444; } /* Red */
+        .action-btn-stop:hover { color: #dc2626; }
+
+        /* Styling for the status badges */
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px; /* Pill shape */
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: capitalize;
+        }
+        .status-active {
+            background-color: #dcfce7; /* Light green */
+            color: #166534; /* Dark green text */
+        }
+        .status-inactive {
+            background-color: #fee2e2; /* Light red */
+            color: #991b1b; /* Dark red text */
+        }
+
+        /* Table row hover effect */
+        tbody tr {
+            transition: all 0.2s ease-in-out;
+        }
+        tbody tr:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            background-color: #ffffff;
+        }
+
+        /* NEW Add Server Button Style */
+        .action-btn {
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease-in-out;
+            z-index: 1;
+        }
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: var(--btn-bg-hover, #fff);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease-in-out;
+            z-index: -1;
+        }
+        .action-btn:hover {
+            color: #ffffff; /* White text on hover */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .action-btn:hover::before { 
+            transform: translateX(0); 
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <!-- Page Wrapper -->
+    <div class="w-full max-w-7xl">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+            <div class="flex items-center gap-4">
+                <a href="/" class="text-gray-400 hover:text-gray-600 transition-colors" title="Go Back">
+                    <i class="fas fa-arrow-left fa-lg"></i>
+                </a>
+                <div>
+                    <h1 class="text-3xl font-bold text-gray-800">
+                        Server List
+                    </h1>
+                    <p class="mt-1 text-gray-500">
+                        Manage all your active and inactive servers.
+                    </p>
+                </div>
+            </div>
+            <!-- UPDATED BUTTON HTML -->
+            <a href="#" class="action-btn mt-4 sm:mt-0 text-center py-2 px-4 font-bold rounded-lg border-2 border-slate-800 text-slate-800" style="--btn-bg-hover: #1e293b;">
+                <i class="fas fa-plus mr-2"></i> Add Server
+            </a>
+        </div>
+
+        <!-- Main Content Container -->
+        <div class="p-4 lg:p-6 bg-white rounded-2xl shadow-lg">
+            <!-- Table Container -->
+            <div class="w-full overflow-x-auto rounded-lg border border-gray-200">
+                <table class="min-w-full leading-normal">
+                    <thead class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
+                        <tr>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Client ID</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Domain</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">IP Address</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Disk Usage</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Load</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Type</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Created</th>
+                            <th class="px-2 py-3 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Details</th>
+                            <th class="px-2 py-3 text-left text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Status</th>
+                            <th class="px-2 py-3 text-center text-xs font-semibold uppercase tracking-wider whitespace-nowrap">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200">
+                        <!-- Table Row 1 -->
+                        <tr>
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-1</td>
+                            <td class="px-2 py-3 whitespace-nowrap">www.cl1.com</td>
+                            <td class="px-2 py-3 whitespace-nowrap">192.168.42.21</td>
+                            <td class="px-2 py-3 whitespace-nowrap">50GB / 250GB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">30%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">Web Server</td>
+                            <td class="px-2 py-3 whitespace-nowrap">21-08-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-active">Active</span></td>
+                            <td class="px-2 py-3">
+                                <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Table Row 2 (Example) -->
+                        <tr class="bg-slate-50">
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-2</td>
+                            <td class="px-2 py-3 whitespace-nowrap">data.corelytix.io</td>
+                            <td class="px-2 py-3 whitespace-nowrap">192.168.42.22</td>
+                            <td class="px-2 py-3 whitespace-nowrap">150GB / 500GB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">55%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">Database</td>
+                            <td class="px-2 py-3 whitespace-nowrap">15-07-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-inactive">Inactive</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        
+                        <!-- Table Row 3 (Example) -->
+                         <tr>
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-3</td>
+                            <td class="px-2 py-3 whitespace-nowrap">archive.old-domain.net</td>
+                            <td class="px-2 py-3 whitespace-nowrap">192.168.42.23</td>
+                            <td class="px-2 py-3 whitespace-nowrap">25GB / 100GB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">15%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">Mail Server</td>
+                            <td class="px-2 py-3 whitespace-nowrap">01-06-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-active">Active</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <!-- Table Row 4 (New Example) -->
+                        <tr class="bg-slate-50">
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-4</td>
+                            <td class="px-2 py-3 whitespace-nowrap">api.newservice.dev</td>
+                            <td class="px-2 py-3 whitespace-nowrap">10.0.1.5</td>
+                            <td class="px-2 py-3 whitespace-nowrap">75GB / 150GB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">80%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">API Gateway</td>
+                            <td class="px-2 py-3 whitespace-nowrap">18-09-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-active">Active</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <!-- Table Row 5 (New Example) -->
+                        <tr>
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-5</td>
+                            <td class="px-2 py-3 whitespace-nowrap">cdn.assets.com</td>
+                            <td class="px-2 py-3 whitespace-nowrap">172.16.0.100</td>
+                            <td class="px-2 py-3 whitespace-nowrap">800GB / 1TB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">40%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">CDN Node</td>
+                            <td class="px-2 py-3 whitespace-nowrap">25-10-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-inactive">Inactive</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <!-- Table Row 6 (New Example) -->
+                        <tr class="bg-slate-50">
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-6</td>
+                            <td class="px-2 py-3 whitespace-nowrap">auth.sso.org</td>
+                            <td class="px-2 py-3 whitespace-nowrap">192.168.10.5</td>
+                            <td class="px-2 py-3 whitespace-nowrap">10GB / 50GB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">22%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">Auth Server</td>
+                            <td class="px-2 py-3 whitespace-nowrap">11-11-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-active">Active</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <!-- Table Row 7 (New Example) -->
+                        <tr>
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-7</td>
+                            <td class="px-2 py-3 whitespace-nowrap">backup.corp.net</td>
+                            <td class="px-2 py-3 whitespace-nowrap">192.168.1.254</td>
+                            <td class="px-2 py-3 whitespace-nowrap">4TB / 5TB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">10%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">Backup Storage</td>
+                            <td class="px-2 py-3 whitespace-nowrap">02-12-2025</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-inactive">Inactive</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+    
+                        <!-- Table Row 8 (New Example) -->
+                        <tr class="bg-slate-50">
+                            <td class="px-2 py-3 font-bold text-slate-700 whitespace-nowrap">CL-8</td>
+                            <td class="px-2 py-3 whitespace-nowrap">git.internal.co</td>
+                            <td class="px-2 py-3 whitespace-nowrap">10.0.5.20</td>
+                            <td class="px-2 py-3 whitespace-nowrap">300GB / 500GB</td>
+                            <td class="px-2 py-3 whitespace-nowrap">35%</td>
+                            <td class="px-2 py-3 whitespace-nowrap">Version Control</td>
+                            <td class="px-2 py-3 whitespace-nowrap">20-01-2026</td>
+                            <td class="px-2 py-3 text-center text-gray-500 text-lg"><i class="fas fa-eye"></i></td>
+                            <td class="px-2 py-3 whitespace-nowrap"><span class="status-badge status-active">Active</span></td>
+                            <td class="px-2 py-3">
+                                 <div class="flex items-center justify-center space-x-4 text-xl">
+                                    <a href="#" class="action-btn-restart transition-colors" title="Restart"><i class="fas fa-sync-alt"></i></a>
+                                    <a href="#" class="action-btn-start transition-colors" title="Start"><i class="fas fa-play-circle"></i></a>
+                                    <a href="#" class="action-btn-stop transition-colors" title="Stop"><i class="fas fa-stop-circle"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
+
