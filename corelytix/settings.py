@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+<<<<<<< HEAD
     'tailwind',
     'theme',
     'dashboard',
@@ -45,6 +46,18 @@ INSTALLED_APPS = [
 ]
 
 TAILWIND_APP_NAME = 'theme'
+=======
+    'serverlist',
+    'tailwind',
+    'theme',
+    'django_browser_reload',
+]
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ['127.0.0.1']
+
+NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
+>>>>>>> 89f89b1 (Initial commit)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django_browser_reload.middleware.BrowserReloadMiddleware",
 ]
 
 ROOT_URLCONF = 'corelytix.urls'
@@ -61,7 +75,11 @@ ROOT_URLCONF = 'corelytix.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
+<<<<<<< HEAD
         'DIRS': [BASE_DIR/"templates"],
+=======
+        'DIRS': [BASE_DIR , 'templates'],
+>>>>>>> 89f89b1 (Initial commit)
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -80,11 +98,19 @@ WSGI_APPLICATION = 'corelytix.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
+<<<<<<< HEAD
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "newdb",
         "USER": "jha",
         "PASSWORD": "ashish@123",
+=======
+    'default': {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "newdb",
+        "USER": "raj",
+        "PASSWORD": "Hello123456",
+>>>>>>> 89f89b1 (Initial commit)
         "HOST": "127.0.0.1",
         "PORT": "5432",
     }
@@ -126,6 +152,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR , "static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field

@@ -1,5 +1,8 @@
 @import "tailwindcss";
+<<<<<<< HEAD
 @plugin "daisyui";
+=======
+>>>>>>> 89f89b1 (Initial commit)
 
 /**
   * A catch-all path to Django template files, JavaScript, and Python files
