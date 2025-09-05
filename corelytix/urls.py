@@ -1,17 +1,8 @@
-# D:\Django\Corelytix\corelytix\urls.py
-
 from django.contrib import admin
-from django.urls import path, include # 'include' को import करना ज़रूरी है
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
-    
-    # यह लाइन dashboard ऐप के सभी URLs को शामिल करती है
-    path('', include('dashboard.urls')), 
+    path('', include('serverlist.urls')),  # 👈 your new app
+    path("__reload__/", include("django_browser_reload.urls")),  # only if using browser reload
 ]
-=======
-    path('', include('core.urls')),
-    path('', include('serverlist.urls'))
-]
->>>>>>> 89f89b1 (Initial commit)
