@@ -7,7 +7,7 @@ def login_view(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('success')
+            return redirect('core:success')   # here success is the name of a url in urlpattern
 
     else:
         
