@@ -8,4 +8,8 @@ urlpatterns = [
     
     # यह लाइन dashboard ऐप के सभी URLs को शामिल करती है
     path('', include('dashboard.urls')), 
+
+
+    path('core/', include('core.urls')),
+
 ]
