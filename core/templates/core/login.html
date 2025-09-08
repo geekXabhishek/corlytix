@@ -1,32 +1,38 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 
-
+{% comment %} 
 <div class='mb-8 flex justify-between items-center'>
 <button  class=" mybtn bg-blue-500 hover:bg-gree-500 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline mb-2 cursor-pointer">Super Admin</button>
 <button class=" mybtn bg-blue-500 hover:bg-gree-500 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline mb-2 cursor-pointer">Client</button>
 <button class="mybtn bg-blue-500 hover:bg-gree-500 text-white font-bold py-2 px-2 rounded focus:outline-none focus:shadow-outline mb-2 cursor-pointer">Agent</button>
-</div>
+</div> {% endcomment %}
 
-<div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
+{% comment %} <h1 class="text-8xl font-bold text-orange-300  leading-tight text-center ">CoreLytix</h1> {% endcomment %}
+
+<video  autoplay loop muted playsinline class="fixed inset-0 w-screen h-screen object-cover z-[-1]" id="background-video">
+        <source src="{% static "videos/server_background_video.mp4" %}" type="video/mp4">
+    </video>
+
+<div class="bg-gray-950 p-8 rounded-lg shadow-lg w-full max-w-sm">
+    <h2 class="text-2xl font-bold mb-6 text-center text-orange-500">Login</h2>
+
 
     
     <form action="{% url 'login' %}" method="POST" >
         {% csrf_token %}
         <div class="mb-4">
-            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input type="email" name="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
+           
+            <input type="email" name="email" id="email" class=" hover:border-amber-500  shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 leading-tight focus:outline-none focus:shadow-outline" placeholder="Email" required>
         </div>
         
         <div class="mb-6">
-            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-            <input type="password" name="password" id="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required>
+            <input type="password" name="password" id="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-300 hover:border-amber-500 mb-3 leading-tight focus:outline-none focus:shadow-outline"  placeholder="Password" required>
         </div>
         
         <div class="flex items-center justify-between">
-            <button  type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full cursor-pointer">
+            <button  type="submit" class="bg-amber-600 ease-in-out hover:bg-orange-500   text-black font-bold py-2 px-4 rounded-2xl focus:outline-none focus:shadow-outline w-full cursor-pointer">
                 Sign In
             </button>
         </div>
