@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import LoginForm
@@ -25,3 +26,16 @@ def login_view(request):
         form = LoginForm()
 
     return render(request, 'core/login.html', {'form': form})
+=======
+from django.shortcuts import render
+
+
+# Create your views here.
+from django.http import HttpResponse
+
+def home(request):
+    return render(request, "dashboard/dashboard.html")
+
+
+    
+>>>>>>> 901d964aaf54577da30687d2ff51b641a9deccd7
