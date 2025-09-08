@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server List - Corlytix</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans leading-normal tracking-normal">
+
+<div class="overflow-x-auto border border-gray-200 mx-auto my-10 shadow-xl rounded-xl max-w-[95vw]">
+    <table class="table-fixed min-w-max w-full rounded-2xl">
+        <thead class="bg-blue-700 text-xs tracking-wider">
+            <tr class="text-white">
+                <th class="px-6 py-4 text-center rounded-tl-xl">CLIENT ID</th>
+                <th class="px-6 py-4 text-center">SERVER DOMAIN</th>
+                <th class="px-6 py-4 text-center">SERVER IP</th>
+                <th class="px-6 py-4 text-center">DISK USAGE</th>
+                <th class="px-6 py-4 text-center">CPU LOAD</th>
+                <th class="px-6 py-4 text-center">SERVER TYPE</th>
+                <th class="px-6 py-4 text-center">CREATED DATE</th>
+                <th class="px-6 py-4 text-center">VIEW DETAILS</th>
+                <th class="px-6 py-4 text-center">STATUS</th>
+                <th class="px-6 py-4 text-center rounded-tr-xl">ACTION BUTTONS</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+
+            <!-- row-1 start -->
+            <tr class="bg-gray-50 text-center hover:bg-gray-100">
+                <td class="px-6 py-4 font-semibold text-md text-gray-600">Client-1</td>
+                <td class="px-6 py-4 text-sm text-gray-500">www.cl1.com</td>
+                <td class="px-6 py-4 text-sm text-gray-500">192.168.42.21</td>
+                <td class="px-6 py-4">
+                    <div class="w-full bg-gray-200 h-2.5 rounded-full">
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 20%;"></div>
+                    </div>
+                    <span class="text-xs text-gray-500">50GB / 250GB</span>
+                </td>
+                <td class="px-6 py-4 text-sm font-bold text-green-600">30%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Web Server</td>
+                <td class="px-6 py-4 text-sm text-gray-500">21-08-2025</td>
+                <td class="px-6 py-4 text-sm text-blue-500 hover:text-blue-700 cursor-pointer"><i class="fa-solid fa-eye"></i></td>
+                <td class="px-6 py-4">
+                    <button class="bg-green-100 text-green-700 text-sm font-semibold rounded-full px-2 py-1">Active</button>
+                </td>
+                <td class="px-6 py-4">
+                    <div class="flex justify-center gap-3">
+                        <button class="p-2 text-gray-500 hover:bg-orange-100 hover:text-orange-500 rounded-full"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-green-100 hover:text-green-500 rounded-full"><i class="fa-solid fa-play"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-red-100 hover:text-red-500 rounded-full"><i class="fa-solid fa-stop"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <!-- row-1 end -->
+
+            <!-- row-2 start -->
+            <tr class="bg-gray-50 text-center hover:bg-gray-100">
+                <td class="px-6 py-4 font-semibold text-md text-gray-600">Client-2</td>
+                <td class="px-6 py-4 text-sm text-gray-500">www.cl2.com</td>
+                <td class="px-6 py-4 text-sm text-gray-500">192.134.23.32</td>
+                <td class="px-6 py-4">
+                    <div class="w-full bg-gray-200 h-2.5 rounded-full">
+                        <div class="bg-red-500 h-2.5 rounded-full" style="width: 25.6%;"></div>
+                    </div>
+                    <span class="text-xs text-gray-500">64GB / 250GB</span>
+                </td>
+                <td class="px-6 py-4 text-sm font-bold text-red-500">45%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Web Server</td>
+                <td class="px-6 py-4 text-sm text-gray-500">28-08-2025</td>
+                <td class="px-6 py-4 text-sm text-blue-500 hover:text-blue-700 cursor-pointer"><i class="fa-solid fa-eye"></i></td>
+                <td class="px-6 py-4">
+                    <button class="bg-red-100 text-red-600 text-sm font-semibold rounded-full px-2 py-1">Inactive</button>
+                </td>
+                <td class="px-6 py-4 flex justify-center">
+                    <div class="flex justify-center gap-3">
+                        <button class="p-2 text-gray-500 hover:bg-orange-100 hover:text-orange-500 rounded-full"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-green-100 hover:text-green-500 rounded-full"><i class="fa-solid fa-play"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-red-100 hover:text-red-500 rounded-full"><i class="fa-solid fa-stop"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <!-- row-2 end -->
+
+            <!-- row-3 start -->
+            <tr class="bg-gray-50 text-center hover:bg-gray-100">
+                <td class="px-6 py-4 font-semibold text-md text-gray-600">Client-3</td>
+                <td class="px-6 py-4 text-sm text-gray-500">www.cl3.net</td>
+                <td class="px-6 py-4 text-sm text-gray-500">10.0.0.13</td>
+                <td class="px-6 py-4">
+                    <div class="w-full bg-gray-200 h-2.5 rounded-full">
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 40%;"></div>
+                    </div>
+                    <span class="text-xs text-gray-500">100GB / 250GB</span>
+                </td>
+                <td class="px-6 py-4 text-sm font-bold text-green-600">55%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Database Server</td>
+                <td class="px-6 py-4 text-sm text-gray-500">02-09-2025</td>
+                <td class="px-6 py-4 text-sm text-blue-500 hover:text-blue-700 cursor-pointer"><i class="fa-solid fa-eye"></i></td>
+                <td class="px-6 py-4">
+                    <button class="bg-green-100 text-green-700 text-sm font-semibold rounded-full px-2 py-1">Active</button>
+                </td>
+                <td class="px-6 py-4 flex justify-center">
+                    <div class="flex justify-center gap-3">
+                        <button class="p-2 text-gray-500 hover:bg-orange-100 hover:text-orange-500 rounded-full"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-green-100 hover:text-green-500 rounded-full"><i class="fa-solid fa-play"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-red-100 hover:text-red-500 rounded-full"><i class="fa-solid fa-stop"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <!-- row-3 end -->
+
+            <!-- row-4 start -->
+            <tr class="bg-gray-50 text-center hover:bg-gray-100">
+                <td class="px-6 py-4 font-semibold text-md text-gray-600">Client-4</td>
+                <td class="px-6 py-4 text-sm text-gray-500">www.cl4.org</td>
+                <td class="px-6 py-4 text-sm text-gray-500">172.16.5.44</td>
+                <td class="px-6 py-4">
+                    <div class="w-full bg-gray-200 h-2.5 rounded-full">
+                        <div class="bg-green-500 h-2.5 rounded-full" style="width: 10%;"></div>
+                    </div>
+                    <span class="text-xs text-gray-500">25GB / 250GB</span>
+                </td>
+                <td class="px-6 py-4 text-sm font-bold text-green-600">15%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Mail Server</td>
+                <td class="px-6 py-4 text-sm text-gray-500">15-07-2025</td>
+                <td class="px-6 py-4 text-sm text-blue-500 hover:text-blue-700 cursor-pointer"><i class="fa-solid fa-eye"></i></td>
+                <td class="px-6 py-4">
+                    <button class="bg-green-100 text-green-700 text-sm font-semibold rounded-full px-2 py-1">Active</button>
+                </td>
+                <td class="px-6 py-4 flex justify-center">
+                    <div class="flex justify-center gap-3">
+                        <button class="p-2 text-gray-500 hover:bg-orange-100 hover:text-orange-500 rounded-full"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-green-100 hover:text-green-500 rounded-full"><i class="fa-solid fa-play"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-red-100 hover:text-red-500 rounded-full"><i class="fa-solid fa-stop"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <!-- row-4 end -->
+
+            <!-- row-5 start -->
+            <tr class="bg-gray-50 text-center hover:bg-gray-100">
+                <td class="px-6 py-4 font-semibold text-md text-gray-600">Client-5</td>
+                <td class="px-6 py-4 text-sm text-gray-500">www.cl5.io</td>
+                <td class="px-6 py-4 text-sm text-gray-500">192.168.88.88</td>
+                <td class="px-6 py-4">
+                    <div class="w-full bg-gray-200 h-2.5 rounded-full">
+                        <div class="bg-red-500 h-2.5 rounded-full" style="width: 90%;"></div>
+                    </div>
+                    <span class="text-xs text-gray-500">225GB / 250GB</span>
+                </td>
+                <td class="px-6 py-4 text-sm font-bold text-red-500">92%</td>
+                <td class="px-6 py-4 text-sm text-gray-500">Application Server</td>
+                <td class="px-6 py-4 text-sm text-gray-500">01-09-2025</td>
+                <td class="px-6 py-4 text-sm text-blue-500 hover:text-blue-700 cursor-pointer"><i class="fa-solid fa-eye"></i></td>
+                <td class="px-6 py-4">
+                    <button class="bg-red-100 text-red-600 text-sm font-semibold rounded-full px-2 py-1">Inactive</button>
+                </td>
+                <td class="px-6 py-4 flex justify-center">
+                    <div class="flex justify-center gap-3">
+                        <button class="p-2 text-gray-500 hover:bg-orange-100 hover:text-orange-500 rounded-full"><i class="fa-solid fa-rotate-right"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-green-100 hover:text-green-500 rounded-full"><i class="fa-solid fa-play"></i></button>
+                        <button class="p-2 text-gray-500 hover:bg-red-100 hover:text-red-500 rounded-full"><i class="fa-solid fa-stop"></i></button>
+                    </div>
+                </td>
+            </tr>
+            <!-- row-5 end -->
+
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
