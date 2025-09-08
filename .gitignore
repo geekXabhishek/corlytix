@@ -1,3 +1,44 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtualenv
+.venv/
+venv/
+env/
+
+# Django
+*.log
+staticfiles/
+media/
+db.sqlite3
+*.sqlite3
+
+# Migrations cache
+**/migrations/**/__pycache__/
+
+# IDEs/Editors
+.vscode/
+.idea/
+*.iml
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+**/static_src/node_modules/
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Tailwind build artifacts
+theme/static/
+theme/static_src/.cache/
+
 # Virtual Environment
 venv/
 *.env
