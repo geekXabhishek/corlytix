@@ -5,30 +5,107 @@
 {% endblock %}
 
 {% block content %}
-<div class="flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-sm">
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Login</h2>
+<div class="flex items-center bg-gradient-to-b from-sky-200 to-sky-100 justify-center  h-screen">
+    <div class="  p-8 rounded-4xl border border-gray-400  w-full max-w-sm  bg-gradient-to-b from-sky-200 via-sky-100 to-sky-50 backdrop-blur-md  shadow-xl">
+        <h2 class="text-2xl text-black font-bold mb-6 text-center ">Sign in with email</h2>
+        
 
     
-    <form action="{% url 'core:login' %}" method="POST" >
-        {% csrf_token %}
-        <div class="mb-4">
-            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email</label>
-            <input type="email" name="email" id="email" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" required>
-        </div>
+        <form action="{% url 'core:login' %}" method="POST" >
+            {% csrf_token %}
+            <div class="mb-3 relative">
+                <!-- Email Input -->
+                <input type="email" name="email" id="email"
+                class="shadow  rounded-2xl w-full py-2 pl-10 pr-3 text-gray-800 leading-tight 
+                  placeholder:text-gray-500 placeholder:font-bold  bg-gray-100"
+                placeholder="Email" required>
+
+                <!-- Email Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor"
+                class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25H4.5a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0L12 12.75 2.25 6.75m19.5 0A2.25 2.25 0 0019.5 4.5H4.5a2.25 2.25 0 00-2.25 2.25" />
+                </svg>
+            </div>
+
         
-        <div class="mb-6">
-            <label for="password" class="block text-gray-700 text-sm font-bold mb-2">Password</label>
-            <input type="password" name="password" id="password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" required>
-        </div>
+          <div class=" mb-1.5 relative">
+    
+            <input type="password" name="password" id="password"
+                class="shadow appearance-none rounded-2xl w-full py-2 pl-10 pr-10  leading-tight 
+               f text-gray-800 
+                  placeholder:text-gray-500 placeholder:font-bold  bg-gray-100"
+                placeholder="Password" required>
+
+            {% comment %} lock icon {% endcomment %}
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+            stroke-width="1.5" stroke="currentColor"
+            class="w-5 h-5 absolute left-3 top-1/2 transform -translate-y-1/2  text-gray-400">
+            <path stroke-linecap="round" stroke-linejoin="round"
+            d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0V10.5M4.5 10.5h15v9a2.25 2.25 0 01-2.25 2.25h-10.5A2.25 2.25 0 014.5 19.5v-9z" />
+            </svg>
+
+    
+            <button type="button" onclick="togglePassword()" 
+                class="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400">
         
-        <div class="flex items-center justify-between">
-            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full">
-                Sign In
+                <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3.98 8.223C5.94 5.64 8.76 4 12 4c3.24 0 6.06 1.64 8.02 4.223M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                d="M4.222 19.778l15.556-15.556" />
+                </svg>
+        
+                <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="w-5 h-5 hidden">
+                 <path stroke-linecap="round" stroke-linejoin="round"
+                d="M2.25 12c2.25-4.5 6.75-7.5 9.75-7.5s7.5 3 9.75 7.5c-2.25 4.5-6.75 7.5-9.75 7.5s-7.5-3-9.75-7.5z" />
+                <path stroke-linecap="round" stroke-linejoin="round"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
             </button>
         </div>
-    </form>
+        <div class="flex justify-end ">
+
+            <a href="#" class="  text-sm text-gray-950 hover:underline ">Forgot password?</a>-
+        </div>
+
+
+
+        
+            <div class="flex items-center justify-between mt-3">
+                <button type="submit" class=" bg-gray-900 hover:bg-black/80 text-gray-300 hover:text-gray-400   font-bold py-2 px-4  border-2 focus:outline-none focus:shadow-outline w-full cursor-pointer rounded-2xl">
+                Get Started
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class=" bg-amber-500 p-8 rounded-4xl m">
+        <h1>Welcome Back</h1>
+    </div>
 </div>
-</div>
+
+
+
+
+<script>
+function togglePassword() {
+    const passwordInput = document.getElementById("password");
+    const eyeOpen = document.getElementById("eyeOpen");
+    const eyeClosed = document.getElementById("eyeClosed");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+        eyeOpen.classList.remove("hidden");
+        eyeClosed.classList.add("hidden");
+    } else {
+        passwordInput.type = "password";
+        eyeOpen.classList.add("hidden");
+        eyeClosed.classList.remove("hidden");
+    }
+}
+</script>
 {% endblock %}
 
