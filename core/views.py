@@ -7,7 +7,7 @@ def login_view(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('home:dashboard')   # here dashboard is the name of a url in urlpattern
+            return redirect('dashboard:dashboard')   # here dashboard is the name of a url in urlpattern
 
     else:
         
