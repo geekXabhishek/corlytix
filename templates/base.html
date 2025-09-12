@@ -32,7 +32,9 @@
       </div>
       
       <div class="hidden lg:flex lg:flex-1 lg:justify-end">
-        <a href="{% url 'core:login' %}" class="text-sm/6 font-semibold text-white">Log in <span aria-hidden="true">&rarr;</span></a>
+        <a href="{% url 'core:login' %}" 
+        class="{% if request.resolver_match.url_name == 'login' %} text-gray-950 {% else %} text-white {% endif %}"
+        >Log in <span aria-hidden="true">&rarr;</span></a>
       </div>
     </nav>
     <el-dialog>
