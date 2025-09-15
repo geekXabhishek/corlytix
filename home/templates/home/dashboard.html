@@ -6,8 +6,47 @@ Dashboard
 
 {% block content %}
 
-<div class="flex items-center justify-center h-screen">
-    <h1 class='text-blue-500 text-xl font-bold'>Dashboard</h1>
+<div class="flex flex-col flex-wrap items-center justify-center h-screen gap-6 p-6 md:flex-row">
+    <!-- server card start -->
+    <div class="flex flex-col justify-center items-center bg-indigo-700 m-4 p-6 rounded-2xl transform hover:-translate-y-1 hover:scale-105 transition duration-300" onclick="window.location.href='{% url 'server' %}'">
+        <i class="fa-solid fa-server text-5xl m-2"></i>
+        <div class="text-center">
+            <h2 class="font-extrabold">Total Servers</h2>
+            <p class="font-semibold">Currently availabled: 23</p>
+        </div>
+    </div>
+    <!-- server card end -->
+
+    <!-- client card start -->
+    <div class="flex flex-col justify-center items-center bg-orange-400 m-4 p-6 rounded-2xl transform hover:-translate-y-1 hover:scale-105 transition duration-300">
+        <i class="fa-solid fa-users text-5xl m-2"></i>
+        <div class="text-center">
+            <h2 class="font-extrabold">Total Clients</h2>
+            <p class="font-semibold">Registered Clients: 45</p>
+        </div>
+    </div>
+    <!-- client card end -->
+
+    <!-- agent card start -->
+    <div class="flex flex-col justify-center items-center bg-green-500 m-4 p-6 rounded-2xl transform hover:-translate-y-1 hover:scale-105 transition duration-300">
+        <i class="fa-solid fa-user-secret text-5xl m-2"></i>
+        <div class="text-center">
+            <h2 class="font-extrabold">Total Agents</h2>
+            <p class="font-semibold">Registered Agents: 15</p>
+        </div>
+    </div>
+    <!-- agent card end -->
+
+    <!-- manager card start -->
+    <div class="flex flex-col justify-center items-center bg-rose-500 m-4 p-6 rounded-2xl transform hover:-translate-y-1 hover:scale-105 transition duration-300">
+        <i class="fa-solid fa-user text-5xl m-2"></i>
+        <div class="text-center">
+            <h2 class="font-extrabold">Total Managers</h2>
+            <p class="font-semibold">Registered Managers: 21</p>
+        </div>
+    </div>
+    <!-- manager card end -->
+
 </div>
 
 
